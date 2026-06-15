@@ -135,6 +135,10 @@ h1 {
   box-shadow: var(--shadow);
 }
 
+.question-panel.is-revealed {
+  animation: cardReveal 640ms ease both;
+}
+
 .question-meta,
 .history-head {
   display: flex;
@@ -167,6 +171,10 @@ h1 {
   color: var(--blue);
 }
 
+.question-panel.is-revealed .question-text {
+  animation: questionReveal 720ms ease both;
+}
+
 .loading-text {
   display: inline-flex;
   align-items: center;
@@ -193,6 +201,45 @@ h1 {
   50% {
     opacity: 1;
     transform: translateY(-2px);
+  }
+}
+
+@keyframes cardReveal {
+  0% {
+    background: rgba(239, 249, 255, 0.96);
+    box-shadow: 0 16px 42px rgba(38, 118, 174, 0.1);
+    transform: translateY(4px);
+  }
+
+  100% {
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: var(--shadow);
+    transform: translateY(0);
+  }
+}
+
+@keyframes questionReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.985);
+  }
+
+  58% {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.006);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loading-text::after,
+  .question-panel.is-revealed,
+  .question-panel.is-revealed .question-text {
+    animation: none;
   }
 }
 

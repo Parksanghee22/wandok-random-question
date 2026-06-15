@@ -117,6 +117,7 @@ function setDrawingState(genreKey) {
   activeGenreKey = genreKey;
   isDrawing = true;
 
+  questionPanel.classList.remove("is-revealed");
   selectedGenre.textContent = genre.label;
   questionPool.textContent = "질문을 고르는 중";
   questionText.innerHTML = '<span class="loading-text">잠시 후 공개됩니다</span>';
@@ -136,6 +137,9 @@ function revealQuestion(genreKey) {
   rerollButton.disabled = false;
   copyButton.disabled = false;
   questionPanel.classList.remove("is-loading");
+  questionPanel.classList.remove("is-revealed");
+  void questionPanel.offsetWidth;
+  questionPanel.classList.add("is-revealed");
   isDrawing = false;
 
   history = [{ genre: genre.label, question: currentQuestion }, ...history].slice(0, 8);
