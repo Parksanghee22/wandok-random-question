@@ -11,7 +11,7 @@
       href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@400;500;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=4" />
+    <link rel="stylesheet" href="styles.css?v=5" />
   </head>
   <body>
     <main class="app-shell">
@@ -58,6 +58,15 @@
 
         <div class="theme-tabs" id="themeTabs" aria-label="질문 테마 선택"></div>
 
+        <form class="add-theme-form" id="addThemeForm">
+          <label for="newThemeInput">새 테마 추가</label>
+          <div class="add-question-row">
+            <input id="newThemeInput" type="text" placeholder="예: 시 / 자기계발 / 역사" maxlength="24" />
+            <button class="secondary-button" type="submit">테마 추가</button>
+          </div>
+          <p class="form-message" id="themeMessage" aria-live="polite"></p>
+        </form>
+
         <form class="add-question-form" id="addQuestionForm">
           <label for="newQuestionInput">선택한 테마에 질문 추가</label>
           <div class="add-question-row">
@@ -67,10 +76,12 @@
           <p class="form-message" id="formMessage" aria-live="polite"></p>
         </form>
 
+        <button class="delete-theme-button" id="deleteThemeButton" type="button" hidden>현재 테마 삭제</button>
+
         <ul class="question-list" id="questionList"></ul>
       </section>
     </main>
 
-    <script src="app.js?v=4"></script>
+    <script src="app.js?v=5"></script>
   </body>
 </html>

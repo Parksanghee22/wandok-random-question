@@ -374,12 +374,23 @@ h1 {
   background: var(--blue-deep);
 }
 
+.add-theme-form,
 .add-question-form {
   display: grid;
   gap: 10px;
   margin-top: 18px;
 }
 
+.add-theme-form {
+  padding-top: 18px;
+  border-top: 1px solid rgba(99, 166, 211, 0.22);
+}
+
+.add-theme-form + .add-question-form {
+  margin-top: 14px;
+}
+
+.add-theme-form label,
 .add-question-form label {
   color: var(--ink);
   font-size: 0.94rem;
@@ -465,6 +476,20 @@ h1 {
   border-radius: 8px;
   cursor: pointer;
   font-size: 0.84rem;
+  font-weight: 800;
+}
+
+.delete-theme-button {
+  width: fit-content;
+  min-height: 36px;
+  margin-top: 8px;
+  padding: 0 12px;
+  color: #24617e;
+  background: rgba(216, 239, 255, 0.72);
+  border: 1px solid rgba(52, 136, 199, 0.2);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.86rem;
   font-weight: 800;
 }
 
