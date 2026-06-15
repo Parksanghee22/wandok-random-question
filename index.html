@@ -11,7 +11,7 @@
       href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@400;500;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=3" />
+    <link rel="stylesheet" href="styles.css?v=4" />
   </head>
   <body>
     <main class="app-shell">
@@ -46,8 +46,31 @@
           <li class="empty-history">아직 뽑은 질문이 없습니다.</li>
         </ol>
       </section>
+
+      <section class="question-library" aria-labelledby="library-title">
+        <div class="library-head">
+          <div>
+            <h2 id="library-title">질문 리스트</h2>
+            <p>테마를 고르고 모임에서 쓰고 싶은 질문을 추가해보세요.</p>
+          </div>
+          <span id="libraryCount" class="library-count">0개</span>
+        </div>
+
+        <div class="theme-tabs" id="themeTabs" aria-label="질문 테마 선택"></div>
+
+        <form class="add-question-form" id="addQuestionForm">
+          <label for="newQuestionInput">선택한 테마에 질문 추가</label>
+          <div class="add-question-row">
+            <input id="newQuestionInput" type="text" placeholder="예: 이 책을 한 문장으로 표현한다면?" maxlength="80" />
+            <button class="primary-button" type="submit">추가</button>
+          </div>
+          <p class="form-message" id="formMessage" aria-live="polite"></p>
+        </form>
+
+        <ul class="question-list" id="questionList"></ul>
+      </section>
     </main>
 
-    <script src="app.js?v=3"></script>
+    <script src="app.js?v=4"></script>
   </body>
 </html>

@@ -281,7 +281,8 @@ h1 {
   cursor: not-allowed;
 }
 
-.history {
+.history,
+.question-library {
   margin-top: 18px;
   padding: 22px 24px;
   background: rgba(247, 251, 252, 0.72);
@@ -292,6 +293,35 @@ h1 {
 .history h2 {
   margin: 0;
   font-size: 1.05rem;
+}
+
+.library-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.library-head h2 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.library-head p {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 0.94rem;
+  line-height: 1.55;
+}
+
+.library-count {
+  flex: 0 0 auto;
+  padding: 6px 10px;
+  color: var(--blue-deep);
+  background: var(--blue-soft);
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 800;
 }
 
 .text-button {
@@ -320,6 +350,124 @@ h1 {
   margin-left: -22px;
 }
 
+.theme-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.theme-tab {
+  min-height: 38px;
+  padding: 0 13px;
+  color: var(--blue-deep);
+  background: rgba(216, 239, 255, 0.7);
+  border: 1px solid rgba(52, 136, 199, 0.18);
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.92rem;
+  font-weight: 800;
+}
+
+.theme-tab.is-active {
+  color: white;
+  background: var(--blue-deep);
+}
+
+.add-question-form {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.add-question-form label {
+  color: var(--ink);
+  font-size: 0.94rem;
+  font-weight: 800;
+}
+
+.add-question-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+}
+
+.add-question-row input {
+  min-height: 48px;
+  width: 100%;
+  padding: 0 14px;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font: inherit;
+}
+
+.add-question-row input:focus {
+  border-color: rgba(52, 136, 199, 0.75);
+  outline: 3px solid rgba(52, 136, 199, 0.12);
+}
+
+.form-message {
+  min-height: 22px;
+  margin: 0;
+  color: var(--blue);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.question-list {
+  display: grid;
+  gap: 8px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.question-list li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(99, 166, 211, 0.2);
+  border-radius: 8px;
+  line-height: 1.55;
+}
+
+.question-list .base-badge,
+.question-list .custom-badge {
+  justify-self: end;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.base-badge {
+  color: var(--muted);
+  background: var(--blue-pale);
+}
+
+.custom-badge {
+  color: var(--blue-deep);
+  background: var(--sky);
+}
+
+.delete-question-button {
+  min-height: 32px;
+  padding: 0 10px;
+  color: var(--blue-deep);
+  background: var(--blue-soft);
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.84rem;
+  font-weight: 800;
+}
+
 @media (max-width: 720px) {
   .app-shell {
     width: min(100% - 24px, 920px);
@@ -336,6 +484,7 @@ h1 {
 
   .question-meta,
   .history-head,
+  .library-head,
   .panel-actions {
     align-items: stretch;
     flex-direction: column;
@@ -348,6 +497,16 @@ h1 {
   .primary-button,
   .secondary-button {
     width: 100%;
+  }
+
+  .add-question-row,
+  .question-list li {
+    grid-template-columns: 1fr;
+  }
+
+  .question-list .base-badge,
+  .question-list .custom-badge {
+    justify-self: start;
   }
 
   .question-text {
