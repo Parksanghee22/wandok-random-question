@@ -1,17 +1,17 @@
 :root {
   color-scheme: light;
-  --bg: #edf4f7;
-  --bg-soft: #f7fbfc;
-  --ink: #18313d;
-  --muted: #607985;
-  --line: #c8dce3;
-  --blue: #426f86;
-  --blue-deep: #244c63;
-  --blue-soft: #d8e9ef;
-  --blue-pale: #eef7fa;
-  --mint: #dcece6;
+  --bg: #eef8ff;
+  --bg-soft: #f8fcff;
+  --ink: #17344d;
+  --muted: #607d93;
+  --line: #c4e0f1;
+  --blue: #3488c7;
+  --blue-deep: #17649d;
+  --blue-soft: #d8efff;
+  --blue-pale: #eff9ff;
+  --sky: #cfeeff;
   --paper: rgba(255, 255, 255, 0.86);
-  --shadow: 0 22px 60px rgba(31, 68, 83, 0.14);
+  --shadow: 0 22px 60px rgba(38, 118, 174, 0.14);
 }
 
 * {
@@ -24,8 +24,9 @@ body {
   color: var(--ink);
   font-family: "Noto Sans KR", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background:
-    linear-gradient(135deg, rgba(220, 236, 230, 0.78), transparent 32%),
-    linear-gradient(215deg, rgba(197, 221, 229, 0.9), transparent 38%),
+    linear-gradient(135deg, rgba(207, 238, 255, 0.9), transparent 34%),
+    linear-gradient(215deg, rgba(185, 224, 250, 0.92), transparent 40%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.72), transparent 52%),
     var(--bg);
 }
 
@@ -50,8 +51,8 @@ button {
   color: var(--blue-deep);
   font-size: 0.9rem;
   font-weight: 800;
-  background: var(--mint);
-  border: 1px solid rgba(36, 76, 99, 0.12);
+  background: var(--sky);
+  border: 1px solid rgba(23, 100, 157, 0.13);
   border-radius: 999px;
 }
 
@@ -88,7 +89,7 @@ h1 {
   background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 8px;
-  box-shadow: 0 12px 30px rgba(31, 68, 83, 0.08);
+  box-shadow: 0 12px 30px rgba(38, 118, 174, 0.08);
   cursor: pointer;
   transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
 }
@@ -96,7 +97,7 @@ h1 {
 .genre-button:hover,
 .genre-button:focus-visible {
   background: var(--blue-pale);
-  border-color: rgba(66, 111, 134, 0.55);
+  border-color: rgba(52, 136, 199, 0.55);
   outline: none;
   transform: translateY(-2px);
 }
@@ -129,7 +130,7 @@ h1 {
   margin-top: 18px;
   padding: clamp(24px, 5vw, 38px);
   background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(117, 151, 163, 0.34);
+  border: 1px solid rgba(99, 166, 211, 0.34);
   border-radius: 8px;
   box-shadow: var(--shadow);
 }
@@ -160,6 +161,39 @@ h1 {
   font-size: clamp(1.9rem, 5vw, 3.3rem);
   line-height: 1.34;
   word-break: keep-all;
+}
+
+.question-panel.is-loading .question-text {
+  color: var(--blue);
+}
+
+.loading-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.loading-text::after {
+  width: 10px;
+  height: 10px;
+  content: "";
+  background: var(--blue);
+  border-radius: 50%;
+  box-shadow: 18px 0 0 rgba(52, 136, 199, 0.56), 36px 0 0 rgba(52, 136, 199, 0.26);
+  animation: breathe 900ms ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 0.42;
+    transform: translateY(2px);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
 }
 
 .panel-actions {
@@ -204,7 +238,7 @@ h1 {
   margin-top: 18px;
   padding: 22px 24px;
   background: rgba(247, 251, 252, 0.72);
-  border: 1px solid rgba(117, 151, 163, 0.28);
+  border: 1px solid rgba(99, 166, 211, 0.28);
   border-radius: 8px;
 }
 

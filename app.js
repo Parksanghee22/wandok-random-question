@@ -58,6 +58,7 @@ const genreGrid = document.querySelector("#genreGrid");
 const selectedGenre = document.querySelector("#selectedGenre");
 const questionPool = document.querySelector("#questionPool");
 const questionText = document.querySelector("#questionText");
+const questionPanel = document.querySelector(".question-panel");
 const rerollButton = document.querySelector("#rerollButton");
 const copyButton = document.querySelector("#copyButton");
 const clearHistoryButton = document.querySelector("#clearHistoryButton");
@@ -67,6 +68,8 @@ let activeGenreKey = "";
 let currentQuestion = "";
 let previousQuestion = "";
 let history = [];
+let isDrawing = false;
+const drawDelay = 1000;
 
 function drawGenres() {
   genreGrid.innerHTML = Object.entries(genreQuestions)
@@ -109,21 +112,40 @@ function renderHistory() {
     .join("");
 }
 
-function drawQuestion(genreKey) {
+function setDrawingState(genreKey) {
   const genre = genreQuestions[genreKey];
   activeGenreKey = genreKey;
+  isDrawing = true;
+
+  selectedGenre.textContent = genre.label;
+  questionPool.textContent = "질문을 고르는 중";
+  questionText.innerHTML = '<span class="loading-text">잠시 후 공개됩니다</span>';
+  questionPanel.classList.add("is-loading");
+  rerollButton.disabled = true;
+  copyButton.disabled = true;
+  updateActiveButton();
+}
+
+function revealQuestion(genreKey) {
+  const genre = genreQuestions[genreKey];
   previousQuestion = currentQuestion;
   currentQuestion = pickQuestion(genreKey);
 
-  selectedGenre.textContent = genre.label;
   questionPool.textContent = `총 ${getPool(genreKey).length}개 질문 중 선택`;
   questionText.textContent = currentQuestion;
   rerollButton.disabled = false;
   copyButton.disabled = false;
+  questionPanel.classList.remove("is-loading");
+  isDrawing = false;
 
   history = [{ genre: genre.label, question: currentQuestion }, ...history].slice(0, 8);
-  updateActiveButton();
   renderHistory();
+}
+
+function drawQuestion(genreKey) {
+  if (isDrawing) return;
+  setDrawingState(genreKey);
+  window.setTimeout(() => revealQuestion(genreKey), drawDelay);
 }
 
 genreGrid.addEventListener("click", (event) => {
@@ -133,7 +155,7 @@ genreGrid.addEventListener("click", (event) => {
 });
 
 rerollButton.addEventListener("click", () => {
-  if (!activeGenreKey) return;
+  if (!activeGenreKey || isDrawing) return;
   drawQuestion(activeGenreKey);
 });
 
